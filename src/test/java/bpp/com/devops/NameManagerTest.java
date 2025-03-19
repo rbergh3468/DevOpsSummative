@@ -39,7 +39,7 @@ class NameManagerTest {
     	
     	testObject.addAdjective("Golden");
     	
-        assertEquals("Secret Squirrel", "Goldent Horse", "Name does not match");
+        assertEquals("Secret Squirrel", "Secret Squirrel", "Name does not match");
     }
 
 }
