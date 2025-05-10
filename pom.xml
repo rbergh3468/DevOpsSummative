@@ -37,27 +37,29 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-<packaging>war</packaging>
-
-<build>
-    <outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
-    <plugins>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>2.1.2.RELEASE</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>repackage</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <mainClass>bpp.com.devops.Application</mainClass>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.2.RELEASE</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>bpp.com.devops.Application</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
